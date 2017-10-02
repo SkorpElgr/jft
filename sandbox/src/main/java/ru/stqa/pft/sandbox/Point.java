@@ -23,6 +23,7 @@ public class Point {
     public double distanceFromCurrentPoint(Point point) {
         return squareRoot(pow2((point.x - this.x)) + (pow2(point.y - this.y)));
     }
+
     public double distanceToCoordinates(double x, double y) {
         return squareRoot(pow2((x - this.x)) + (pow2(y - this.y)));
     }
