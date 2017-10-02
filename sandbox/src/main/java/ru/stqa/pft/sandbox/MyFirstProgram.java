@@ -9,7 +9,7 @@ public class MyFirstProgram {
         Point pointB = new Point(2, 2);
         print("Distance between pointA and pointB is: " + String.format("%.3f", distance(pointA, pointB)));
         print("Distance to specified point is: " + String.format("%.3f", pointA.distanceFromCurrentPoint(pointB)));
-        print("Distance to specified coordinates X,Y: " + String.format("%.3f", pointA.distanceToCoordinates(3.3,4)));
+        print("Distance to specified point with coordinates X,Y: " + String.format("%.3f", pointA.distanceToCoordinates(3.3,4)));
     }
 
     public static double area(double a) {
