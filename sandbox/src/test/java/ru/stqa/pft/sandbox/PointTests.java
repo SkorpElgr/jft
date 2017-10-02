@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 import static ru.stqa.pft.sandbox.MyFirstProgram.distance;
 import static ru.stqa.pft.sandbox.MyFirstProgram.distanceBetweenPoints;
 
-;
-
 /**
  * Created by Admin on 02.10.2017.
  */
