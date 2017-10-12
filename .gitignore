@@ -13,3 +13,4 @@ gradle-app.setting
 *.log
 /sandbox/.gradle/
 /addressbook-web-tests/.gradle/
+.idea/modules/addressbook-web-tests_test.iml
