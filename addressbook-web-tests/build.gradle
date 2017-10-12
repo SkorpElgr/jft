@@ -5,4 +5,5 @@ repositories{
 }
 dependencies{
     compile 'org.testng:testng:6.11'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
 }
