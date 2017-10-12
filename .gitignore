@@ -11,6 +11,5 @@ gradle-app.setting
 !gradle-wrapper.jar
 .idea/workspace.xml
 *.log
-/.gitignore
 /sandbox/.gradle/
 /addressbook-web-tests/.gradle/
