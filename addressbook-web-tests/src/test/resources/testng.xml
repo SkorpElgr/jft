@@ -1,0 +1,11 @@
+<!--<suite name="SeleniumTest" verbose="1">-->
+<!--<test name="Smoke">-->
+<!--<parameter name="browser" value="chrome" />-->
+<!--<classes>-->
+<!--<class name=ContactCreationTests />-->
+<!--<class name="Tests.MenuTests" />-->
+<!--<class name="Tests.AuthorizationTests" />-->
+<!--<class name="Tests.OnlineOrderTests" />-->
+<!--</classes>-->
+<!--</test>-->
+<!--</suite>-->
