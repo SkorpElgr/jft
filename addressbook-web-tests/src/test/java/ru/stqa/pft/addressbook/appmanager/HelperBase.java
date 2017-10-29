@@ -1,8 +1,8 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+
+import java.util.concurrent.TimeUnit;
 
 public class HelperBase {
     protected WebDriver wd;
@@ -12,14 +12,22 @@ public class HelperBase {
     }
 
     protected void click(By locator) {
-        wd.findElement(locator).click();
+        JavascriptExecutor jse = (JavascriptExecutor) wd;
+        if (!isElementPresent(locator)) {
+            jse.executeScript("arguments[0].scrollIntoView()", wd.findElement(locator));
+        } else {
+            jse.executeScript("arguments[0].click()", wd.findElement(locator));
+        }
     }
 
     protected void type(By locator, String text) {
-        click(locator);
         if (text != null) {
-            wd.findElement(locator).clear();
-            wd.findElement(locator).sendKeys(text);
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (!existingText.equals(text)) {
+                click(locator);
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
         }
     }
 
@@ -28,6 +36,18 @@ public class HelperBase {
             wd.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
+    protected boolean isElementPresent(By locator) {
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        try {
+            wd.findElement(locator);
+            wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            return true;
+        } catch (NoSuchElementException ex) {
+            wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             return false;
         }
     }

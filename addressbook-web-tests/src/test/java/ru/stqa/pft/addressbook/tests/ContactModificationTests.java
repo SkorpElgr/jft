@@ -16,7 +16,7 @@ public class ContactModificationTests extends TestBase {
                 "no second house", "Luxoft",
                 "Updated Address line 1,\naddressline2", "38067842",
                 "35148", "526541", "478461",
-                "UpdatedEmail@gmail.com", "30215", "Notes text..."));
+                "UpdatedEmail@gmail.com", "30215", "Notes text...", null), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().goToMainPage();
     }
