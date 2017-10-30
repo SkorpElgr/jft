@@ -18,6 +18,12 @@ public class GroupHelper extends HelperBase {
         click(By.name("submit"));
     }
 
+    public void createDefaultGroup() {
+        initGroupCreation();
+        fillGroupForm(new GroupData("test1", "test2", "test3"));
+        submitGroupCreation();
+    }
+
     public void fillGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
