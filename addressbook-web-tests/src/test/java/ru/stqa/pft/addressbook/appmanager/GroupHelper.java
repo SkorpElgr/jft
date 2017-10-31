@@ -49,4 +49,8 @@ public class GroupHelper extends HelperBase {
     public void submitGroupModification() {
         click(By.name("update"));
     }
+
+    public int getGroupCount() {
+        return (wd.findElements(By.xpath("//span[@class='group']")).size());
+    }
 }

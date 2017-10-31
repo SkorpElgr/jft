@@ -9,11 +9,17 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToGroupPage() {
-        click(By.linkText("groups"));
+        String groupPageUrl = "http://localhost/addressbook/group.php";
+        if (!wd.getCurrentUrl().equals(groupPageUrl)) {
+            click(By.linkText("groups"));
+        }
     }
 
     public void goToMainPage() {
-        wd.get("http://localhost/addressbook/");
+        String mainPageUrl = "http://localhost/addressbook/";
+        if (!wd.getCurrentUrl().equals(mainPageUrl)) {
+            wd.get(mainPageUrl);
+        }
     }
 
 }

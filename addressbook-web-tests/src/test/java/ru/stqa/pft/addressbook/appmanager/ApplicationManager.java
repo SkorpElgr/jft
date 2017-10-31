@@ -38,7 +38,7 @@ public class ApplicationManager {
             wd = new InternetExplorerDriver(options);
         }
         // wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox ESR/firefox.exe"));
-        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         navigationHelper.goToMainPage();

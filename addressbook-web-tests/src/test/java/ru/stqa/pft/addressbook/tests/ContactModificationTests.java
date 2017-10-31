@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -10,6 +11,8 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
+        app.getNavigationHelper().goToMainPage();
+        int before = app.getContactHelper().getContactCount();
         try {
             app.getContactHelper().selectContact();
         } catch (NoSuchElementException ex) {
@@ -24,5 +27,7 @@ public class ContactModificationTests extends TestBase {
                 "UpdatedEmail@gmail.com", "30215", "Notes text...", null), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().goToMainPage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before);
     }
 }
