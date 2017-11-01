@@ -11,7 +11,7 @@ public class GroupDeletionTests extends TestBase {
         app.getNavigationHelper().goToGroupPage();
         int before = app.getGroupHelper().getGroupCount();
         try {
-            app.getGroupHelper().selectGroup();
+            app.getGroupHelper().selectGroup(before - 1);
         } catch (NoSuchElementException ex) {
             app.getGroupHelper().createDefaultGroup();
         }
