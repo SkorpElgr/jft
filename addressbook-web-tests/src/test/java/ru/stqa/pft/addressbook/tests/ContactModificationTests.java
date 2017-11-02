@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -13,10 +12,9 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getNavigationHelper().goToMainPage();
         int before = app.getContactHelper().getContactCount();
-        try {
-            app.getContactHelper().selectContact();
-        } catch (NoSuchElementException ex) {
+        if (before == 0) {
             app.getContactHelper().createDefaultContact();
+            before += 1;
         }
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Updatedfirstname", "UpdatedMiddleName",

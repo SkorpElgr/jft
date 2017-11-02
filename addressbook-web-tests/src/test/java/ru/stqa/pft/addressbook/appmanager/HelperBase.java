@@ -41,13 +41,13 @@ public class HelperBase {
     }
 
     protected boolean isElementPresent(By locator) {
-        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         try {
             wd.findElement(locator);
-            wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
             return true;
         } catch (NoSuchElementException ex) {
-            wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
             return false;
         }
     }

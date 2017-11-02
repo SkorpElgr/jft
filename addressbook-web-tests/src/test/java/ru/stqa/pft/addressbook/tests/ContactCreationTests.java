@@ -18,6 +18,7 @@ public class ContactCreationTests extends TestBase {
                 "35148", "526541", "478461",
                 "email@gmail.com", "30215", "Notes text...", "test1"), true);
         app.getContactHelper().submitContactCreation();
+        app.getNavigationHelper().goToMainPage();
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after, before + 1);
     }

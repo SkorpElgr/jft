@@ -31,6 +31,7 @@ public class ContactHelper extends HelperBase {
                 "email@gmail.com", "30215", "Notes text...", "test1"), true);
         submitContactCreation();
     }
+
     public void submitContactModification() {
         click(By.name("update"));
     }
@@ -67,17 +68,23 @@ public class ContactHelper extends HelperBase {
 
         if (creation) {
             try {
-                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+                if (calcSelectOption() > 1) {
+                    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+                }
             } catch (NoSuchElementException ex) {
-                System.out.println(ex);
+                System.out.println("Group Wasn't created");
             }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
     }
 
+    private int calcSelectOption() {
+        return wd.findElements(By.xpath("//select[@name='new_group']//option")).size();
+    }
+
     public void initContactModification() {
-        click(By.xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+        click(By.xpath("//*[@title='Edit']"));
     }
 
     public int getContactCount() {

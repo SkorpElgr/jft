@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,11 +11,11 @@ public class ContactDeletionTests extends TestBase {
     public void testContactDeletion() {
         app.getNavigationHelper().goToMainPage();
         int before = app.getContactHelper().getContactCount();
-        try {
-            app.getContactHelper().selectContact();
-        } catch (NoSuchElementException ex) {
+        if (before == 0) {
             app.getContactHelper().createDefaultContact();
+            before += 1;
         }
+        app.getContactHelper().selectContact();
         app.getContactHelper().deleteContact();
         app.getContactHelper().closeContactDeletionAlert();
         app.getNavigationHelper().goToMainPage();

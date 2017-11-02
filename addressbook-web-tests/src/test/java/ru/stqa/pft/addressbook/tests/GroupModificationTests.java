@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -13,10 +12,9 @@ public class GroupModificationTests extends TestBase {
     public void testGroupModification() {
         app.getNavigationHelper().goToGroupPage();
         int before = app.getGroupHelper().getGroupCount();
-        try {
-            app.getGroupHelper().selectGroup(before - 1);
-        } catch (NoSuchElementException ex) {
+        if (before == 0) {
             app.getGroupHelper().createDefaultGroup();
+            before += 1;
         }
         app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("groupChangedName", "groupChangedHeader", "groupChangedFooter"));
