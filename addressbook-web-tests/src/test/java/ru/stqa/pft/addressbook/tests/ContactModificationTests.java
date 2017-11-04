@@ -11,11 +11,10 @@ public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
         app.getNavigationHelper().goToMainPage();
-        int before = app.getContactHelper().getContactCount();
-        if (before == 0) {
+        if (app.getContactHelper().isThereAnyGroup()) {
             app.getContactHelper().createDefaultContact();
-            before += 1;
         }
+        int before = app.getContactHelper().getContactCount();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Updatedfirstname", "UpdatedMiddleName",
                 "UpdatedlastName", "Nickname", "Parnter",

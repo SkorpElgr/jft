@@ -10,11 +10,10 @@ public class ContactDeletionTests extends TestBase {
     @Test
     public void testContactDeletion() {
         app.getNavigationHelper().goToMainPage();
-        int before = app.getContactHelper().getContactCount();
-        if (before == 0) {
+        if (app.getContactHelper().isThereAnyGroup()) {
             app.getContactHelper().createDefaultContact();
-            before += 1;
         }
+        int before = app.getContactHelper().getContactCount();
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteContact();
         app.getContactHelper().closeContactDeletionAlert();
