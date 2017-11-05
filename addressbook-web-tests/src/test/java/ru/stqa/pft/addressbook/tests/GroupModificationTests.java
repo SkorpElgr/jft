@@ -13,7 +13,7 @@ public class GroupModificationTests extends TestBase {
     @Test
     public void testGroupModification() {
         app.getNavigationHelper().goToGroupPage();
-        if (app.getGroupHelper().isThereAnyGroup()) {
+        if (!app.getGroupHelper().isThereAnyGroup()) {
             app.getGroupHelper().createDefaultGroup();
         }
         List<GroupData> before = app.getGroupHelper().getGroupList();

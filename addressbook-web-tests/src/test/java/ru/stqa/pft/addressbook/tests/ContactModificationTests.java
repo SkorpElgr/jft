@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
         app.getNavigationHelper().goToMainPage();
-        if (app.getContactHelper().isThereAnyGroup()) {
+        if (!app.getContactHelper().isThereAnyGroup()) {
             app.getContactHelper().createDefaultContact();
         }
         List<ContactData> before = app.getContactHelper().getContactList();

@@ -13,7 +13,7 @@ public class ContactDeletionTests extends TestBase {
     @Test
     public void testContactDeletion() {
         app.getNavigationHelper().goToMainPage();
-        if (app.getContactHelper().isThereAnyGroup()) {
+        if (!app.getContactHelper().isThereAnyGroup()) {
             app.getContactHelper().createDefaultContact();
         }
         List<ContactData> before = app.getContactHelper().getContactList();
