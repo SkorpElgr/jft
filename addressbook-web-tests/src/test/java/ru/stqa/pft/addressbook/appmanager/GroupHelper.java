@@ -29,6 +29,13 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
+    public void createGroup(GroupData groupData) {
+        initGroupCreation();
+        fillGroupForm(groupData);
+        submitGroupCreation();
+        click(By.linkText("groups"));
+    }
+
     public void fillGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
@@ -64,8 +71,9 @@ public class GroupHelper extends HelperBase {
         List<GroupData> groups = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             String name = element.getText();
-            GroupData group = new GroupData(name, null, null);
+            GroupData group = new GroupData(id, name, null, null);
             groups.add(group);
         }
         return groups;
@@ -74,4 +82,5 @@ public class GroupHelper extends HelperBase {
     public boolean isThereAnyGroup() {
         return (getGroupCount() > 0);
     }
+
 }
