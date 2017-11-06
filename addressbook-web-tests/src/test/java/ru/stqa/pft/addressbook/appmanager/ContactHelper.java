@@ -54,9 +54,10 @@ public class ContactHelper extends HelperBase {
 
 
     public void fillContactForm(ContactData contactData, boolean creation) {
+        initContactCreation();
         type(By.name("firstname"), contactData.getFirstName());
-        type(By.name("middlename"), contactData.getMiddleName());
         type(By.name("lastname"), contactData.getLastName());
+        type(By.name("middlename"), contactData.getMiddleName());
         type(By.name("nickname"), contactData.getNickname());
         type(By.name("title"), contactData.getParnter());
         type(By.name("company"), contactData.getCompanyName());
@@ -70,18 +71,21 @@ public class ContactHelper extends HelperBase {
         type(By.name("phone2"), contactData.getSecondPhone());
         type(By.name("notes"), contactData.getNotes());
 
-        if (creation) {
-            try {
-                if (calcSelectOption() > 1) {
-                    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-                }
-            } catch (NoSuchElementException ex) {
-                System.out.println("Group Wasn't created");
+        if (creation) try {
+            if ((calcSelectOption() > 1) && (contactData.getGroup() != null)) {
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
             }
-        } else {
+        } catch (NoSuchElementException ex) {
+            System.out.println("Group Wasn't created");
+        }
+        else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
+        submitContactCreation();
+        goToMainPage();
+
     }
+
 
     private int calcSelectOption() {
         return wd.findElements(By.xpath("//select[@name='new_group']//option")).size();
@@ -104,8 +108,9 @@ public class ContactHelper extends HelperBase {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
-            String firstname = element.getText();
-            ContactData contact = new ContactData(firstname);
+            String firstName = element.findElement(By.xpath("//td[3]")).getText();
+            String lastName = element.findElement(By.xpath("//td[2]")).getText();
+            ContactData contact = new ContactData(firstName, lastName);
             contacts.add(contact);
         }
         return contacts;

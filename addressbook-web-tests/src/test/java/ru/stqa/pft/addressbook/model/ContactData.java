@@ -1,9 +1,9 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private final String firstName;
-    private String middleName;
+    private String firstName;
     private String lastName;
+    private String middleName;
     private String nickname;
     private String parnter;
     private String address2;
@@ -16,16 +16,39 @@ public class ContactData {
     private String email;
     private String secondPhone;
     private String notes;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName != null ? firstName.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
     private String group;
 
-    public ContactData(String firstName, String middleName, String lastName,
-                       String nickname, String parnter, String address2,
-                       String companyName, String address, String homePhone,
-                       String mobilePone, String workPhone, String faxNumber,
-                       String email, String secondPhone, String notes, String group) {
+    public ContactData(String... strings) {
         this.firstName = firstName;
-        this.middleName = middleName;
         this.lastName = lastName;
+        this.middleName = middleName;
         this.nickname = nickname;
         this.parnter = parnter;
         this.address2 = address2;
@@ -41,8 +64,9 @@ public class ContactData {
         this.group = group;
     }
 
-    public ContactData(String firstName) {
+    public ContactData(String firstName, String lastName) {
         this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
@@ -108,4 +132,6 @@ public class ContactData {
     public String getGroup() {
         return group;
     }
+
+
 }

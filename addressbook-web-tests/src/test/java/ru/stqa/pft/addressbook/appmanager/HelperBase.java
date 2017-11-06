@@ -51,4 +51,11 @@ public class HelperBase {
             return false;
         }
     }
+
+    public void goToMainPage() {
+        String mainPageUrl = "http://localhost/addressbook/";
+        if (!wd.getCurrentUrl().equals(mainPageUrl)) {
+            wd.get(mainPageUrl);
+        }
+    }
 }

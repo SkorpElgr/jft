@@ -15,11 +15,4 @@ public class NavigationHelper extends HelperBase {
         }
     }
 
-    public void goToMainPage() {
-        String mainPageUrl = "http://localhost/addressbook/";
-        if (!wd.getCurrentUrl().equals(mainPageUrl)) {
-            wd.get(mainPageUrl);
-        }
-    }
-
 }

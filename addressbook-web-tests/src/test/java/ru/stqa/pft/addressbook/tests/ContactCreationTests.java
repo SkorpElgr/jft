@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
@@ -12,17 +13,15 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() {
         app.getNavigationHelper().goToMainPage();
         List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().initContactCreation();
-        app.getContactHelper().fillContactForm(new ContactData("firstname", "middleName",
-                "lastName", "Nickname", "Parnter",
-                "no second house", "Luxoft",
-                "Some Address line 1,\naddressline2", "38067842",
-                "35148", "526541", "478461",
-                "email@gmail.com", "30215", "Notes text...", "test1"), true);
-        app.getContactHelper().submitContactCreation();
-        app.getNavigationHelper().goToMainPage();
+        ContactData contact = new ContactData("name1", "lastname2");
+        app.getContactHelper().fillContactForm(contact, true);
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
+        before.add(contact);
+        Comparator<? super ContactData> byLastName = Comparator.comparing(ContactData::getLastName);
+        before.sort(byLastName);
+        after.sort(byLastName);
+        Assert.assertEquals(before, after);
     }
 
 }
