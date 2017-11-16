@@ -39,6 +39,7 @@ public class ContactData {
         this.group = group;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,12 +58,36 @@ public class ContactData {
         return result;
     }
 
+    public ContactData(int id, String firstName, String middleName, String lastName,
+                       String nickname, String parnter, String address2,
+                       String companyName, String address, String homePhone,
+                       String mobilePone, String workPhone, String faxNumber,
+                       String email, String secondPhone, String notes, String group) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.nickname = nickname;
+        this.parnter = parnter;
+        this.address2 = address2;
+        this.companyName = companyName;
+        this.address = address;
+        this.homePhone = homePhone;
+        this.mobilePone = mobilePone;
+        this.workPhone = workPhone;
+        this.faxNumber = faxNumber;
+        this.email = email;
+        this.secondPhone = secondPhone;
+        this.notes = notes;
+        this.group = group;
+    }
 
     public ContactData(String firstName, String middleName, String lastName,
                        String nickname, String parnter, String address2,
                        String companyName, String address, String homePhone,
                        String mobilePone, String workPhone, String faxNumber,
                        String email, String secondPhone, String notes, String group) {
+        this.id = Integer.MAX_VALUE;
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;

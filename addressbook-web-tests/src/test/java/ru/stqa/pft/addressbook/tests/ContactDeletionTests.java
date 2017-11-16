@@ -23,9 +23,9 @@ public class ContactDeletionTests extends TestBase {
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
         before.remove(before.size() - 1);
-        Comparator<? super ContactData> byLastName = Comparator.comparing(ContactData::getLastName);
-        before.sort(byLastName);
-        after.sort(byLastName);
+        Comparator<? super ContactData> byId = Comparator.comparing(ContactData::getId);
+        before.sort(byId);
+        after.sort(byId);
         Assert.assertEquals(before, after);
 
 
