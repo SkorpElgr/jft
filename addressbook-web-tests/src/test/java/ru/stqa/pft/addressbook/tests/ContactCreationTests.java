@@ -13,14 +13,14 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() {
         app.getNavigationHelper().goToMainPage();
         List<ContactData> before = app.getContactHelper().getContactList();
-        ContactData contact = new ContactData("name1", "lastname2");
-        app.getContactHelper().fillContactForm(contact, true);
+        ContactData contact = new ContactData("name1", "lastname2", "test22");
+        app.getContactHelper().createContact(contact);
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
         before.add(contact);
-        Comparator<? super ContactData> byLastName = Comparator.comparing(ContactData::getLastName);
-        before.sort(byLastName);
-        after.sort(byLastName);
+        Comparator<? super ContactData> byId = Comparator.comparing(ContactData::getId);
+        before.sort(byId);
+        after.sort(byId);
         Assert.assertEquals(before, after);
     }
 

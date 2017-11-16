@@ -10,7 +10,6 @@ public class GroupData {
 
     public GroupData(int id, String name, String header, String footer) {
         this.id = id;
-
         this.name = name;
         this.header = header;
         this.footer = footer;

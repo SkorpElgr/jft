@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -73,19 +72,15 @@ public class ContactHelper extends HelperBase {
         type(By.name("phone2"), contactData.getSecondPhone());
         type(By.name("notes"), contactData.getNotes());
 
-        if (creation) try {
+        if (creation) {
             if ((calcSelectOption() > 1) && (contactData.getGroup() != null)) {
                 new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
             }
-        } catch (NoSuchElementException ex) {
-            System.out.println("Group Wasn't created");
-        }
-        else {
+        } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
         submitContactCreation();
         goToMainPage();
-
     }
 
 
@@ -110,11 +105,17 @@ public class ContactHelper extends HelperBase {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
-            String firstName = element.findElement(By.xpath("//td[3]")).getText();
-            String lastName = element.findElement(By.xpath("//td[2]")).getText();
-            ContactData contact = new ContactData(firstName, lastName);
+            List<WebElement> contactInfo = element.findElements(By.xpath(".//td"));
+            String lastName = contactInfo.get(1).getText();
+            String firstName = contactInfo.get(2).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData(id, firstName, lastName);
             contacts.add(contact);
         }
         return contacts;
+    }
+
+    public void createContact(ContactData contact) {
+        fillContactForm(contact, true);
     }
 }
