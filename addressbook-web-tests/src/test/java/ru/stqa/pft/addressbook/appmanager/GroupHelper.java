@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GroupHelper extends HelperBase {
@@ -29,9 +29,13 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
-    public void delete(int index) {
-        selectGroup(index);
+    public void delete(GroupData group) {
+        selectGroupById(group.getId());
         deleteSelectedGroups();
+    }
+
+    private void selectGroupById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void create(GroupData groupData) {
@@ -41,8 +45,8 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
-    public void modify(int index, GroupData group) {
-        initGroupModification(index);
+    public void modify(GroupData group) {
+        initGroupModification(group.getId());
         fillGroupForm(group);
         submitGroupModification();
         returnToGroupPage();
@@ -63,14 +67,12 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-    public void selectGroup(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
 
     public void initGroupModification(int index) {
-        selectGroup(index);
+        selectGroupById(index);
         click(By.name("edit"));
     }
+
 
     public void submitGroupModification() {
         click(By.name("update"));
@@ -80,20 +82,20 @@ public class GroupHelper extends HelperBase {
         return (wd.findElements(By.xpath("//span[@class='group']")).size());
     }
 
-    public List<GroupData> list() {
+    public boolean isThereAnyGroup() {
+        return (getGroupCount() > 0);
+    }
+
+    public Groups all() {
         isElementPresent(By.name("selected[]"));
-        List<GroupData> groups = new ArrayList<>();
+        Groups groups = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             String name = element.getText();
-            // GroupData group = new GroupData(id, name, null, null);
             groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
     }
 
-    public boolean isThereAnyGroup() {
-        return (getGroupCount() > 0);
-    }
 }
