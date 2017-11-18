@@ -15,18 +15,16 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().goToMainPage();
-        if (!app.getContactHelper().isThereAnyGroup()) {
-            app.getContactHelper().createDefaultContact();
+        app.goTo().goToMainPage();
+        if (!app.contact().isThereAnyGroup()) {
+            app.contact().create();
         }
     }
 
     @Test
     public void testContactModification() {
-        List<ContactData> before = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
-        app.getContactHelper().selectContact(index);
-        app.getContactHelper().initContactModification(index);
         ContactData contact = new ContactData(before.get(index).getId(), "Updatedfirstname", "UpdatedMiddleName",
                 "UpdatedlastName", "Nickname", "Parnter",
                 "no second house", "Luxoft",
@@ -34,8 +32,8 @@ public class ContactModificationTests extends TestBase {
                 "35148", "526541", "478461",
                 "UpdatedEmail@gmail.com", "30215", "Notes text...", null);
 
-        app.getContactHelper().fillContactForm(contact, false);
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().modify(index, contact);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(index);
@@ -45,4 +43,6 @@ public class ContactModificationTests extends TestBase {
         after.sort(byId);
         Assert.assertEquals(before, after);
     }
+
+
 }

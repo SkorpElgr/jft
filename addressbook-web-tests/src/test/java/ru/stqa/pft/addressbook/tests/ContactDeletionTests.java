@@ -15,18 +15,18 @@ public class ContactDeletionTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().goToMainPage();
-        if (!app.getContactHelper().isThereAnyGroup()) {
-            app.getContactHelper().createDefaultContact();
+        app.goTo().goToMainPage();
+        if (!app.contact().isThereAnyGroup()) {
+            app.contact().create();
         }
     }
 
     @Test
     public void testContactDeletion() {
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().selectContact(before.size() - 1);
-        app.getContactHelper().deleteContact();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().list();
+        app.contact().select(before.size() - 1);
+        app.contact().delete();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size() - 1);
         before.remove(before.size() - 1);
         Comparator<? super ContactData> byId = Comparator.comparing(ContactData::getId);

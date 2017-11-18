@@ -8,7 +8,7 @@ public class NavigationHelper extends HelperBase {
         super(wd);
     }
 
-    public void goToGroupPage() {
+    public void groupPage() {
         String groupPageUrl = "http://localhost/addressbook/group.php";
         if (!wd.getCurrentUrl().equals(groupPageUrl)) {
             click(By.linkText("groups"));
