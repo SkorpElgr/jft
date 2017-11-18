@@ -26,12 +26,18 @@ public class ContactHelper extends HelperBase {
 
     public void create() {
         initContactCreation();
-        fillContactForm(new ContactData("firstname", "middleName",
-                "lastName", "Nickname", "Parnter",
-                "no second house", "Luxoft",
-                "Some Address line 1,\naddressline2", "38067842",
-                "35148", "526541", "478461",
-                "email@gmail.com", "30215", "Notes text...", "test1"), true);
+//        fillContactForm(new ContactData("firstname", "middleName",
+//                "lastName", "Nickname", "Parnter",
+//                "no second house", "Luxoft",
+//                "Some Address line 1,\naddressline2", "38067842",
+//                "35148", "526541", "478461",
+//                "email@gmail.com", "30215", "Notes text...", "test1"), true);
+        fillContactForm(new ContactData()
+                .withFirstName("firstname").withMiddleName("middleName").withLastName("lastName")
+                .withNickname("Nickname").withParnter("Parnter").withSecondPhone("no second house")
+                .withCompanyName("Luxoft").withAddress("Some Address line 1,\naddressline2").withHomePhone("38067842")
+                .withMobilePhone("35148").withFaxNumber("478461").withEmail("email@gmail.com").withAddress2("30215")
+                .withNotes("Notes text...").withGroup("test1"), true);
         submitContactCreation();
     }
 
@@ -109,7 +115,7 @@ public class ContactHelper extends HelperBase {
             String lastName = contactInfo.get(1).getText();
             String firstName = contactInfo.get(2).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, firstName, lastName);
+            ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
             contacts.add(contact);
         }
         return contacts;

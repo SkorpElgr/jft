@@ -16,7 +16,7 @@ public class ContactDeletionTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().goToMainPage();
-        if (!app.contact().isThereAnyGroup()) {
+        if (app.contact().list().size() == 0) {
             app.contact().create();
         }
     }
