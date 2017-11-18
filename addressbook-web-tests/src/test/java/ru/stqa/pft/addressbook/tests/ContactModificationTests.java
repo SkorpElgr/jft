@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -11,12 +12,17 @@ import java.util.List;
  * Created by Admin on 22.10.2017.
  */
 public class ContactModificationTests extends TestBase {
-    @Test
-    public void testContactModification() {
+
+    @BeforeMethod
+    public void ensurePreconditions() {
         app.getNavigationHelper().goToMainPage();
         if (!app.getContactHelper().isThereAnyGroup()) {
             app.getContactHelper().createDefaultContact();
         }
+    }
+
+    @Test
+    public void testContactModification() {
         List<ContactData> before = app.getContactHelper().getContactList();
         int index = before.size() - 1;
         app.getContactHelper().selectContact(index);

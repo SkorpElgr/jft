@@ -36,6 +36,13 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
+    public void modifyGroup(int index, GroupData group) {
+        initGroupModification(index);
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+    }
+
     public void fillGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
@@ -83,11 +90,5 @@ public class GroupHelper extends HelperBase {
 
     public boolean isThereAnyGroup() {
         return (getGroupCount() > 0);
-    }
-
-    public void modifyGroup(GroupData group) {
-        fillGroupForm(group);
-        submitGroupModification();
-        returnToGroupPage();
     }
 }

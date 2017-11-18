@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -11,17 +12,21 @@ import java.util.List;
  * Created by Admin on 22.10.2017.
  */
 public class GroupModificationTests extends TestBase {
-    @Test
-    public void testGroupModification() {
+
+    @BeforeMethod
+    public void ensurePreconditions() {
         app.getNavigationHelper().goToGroupPage();
         if (!app.getGroupHelper().isThereAnyGroup()) {
             app.getGroupHelper().createDefaultGroup();
         }
+    }
+
+    @Test
+    public void testGroupModification() {
         List<GroupData> before = app.getGroupHelper().getGroupList();
         int index = before.size() - 1;
-        app.getGroupHelper().initGroupModification(index);
         GroupData group = new GroupData(before.get(index).getId(), "groupChangedName", "groupChangedHeader", "groupChangedFooter");
-        app.getGroupHelper().modifyGroup(group);
+        app.getGroupHelper().modifyGroup(index, group);
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(after.size(), before.size());
 
