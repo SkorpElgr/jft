@@ -28,10 +28,10 @@ public class ContactModificationTests extends TestBase {
         ContactData contact = new ContactData().withId(modifiedContact.getId())
                 .withFirstName("Updatedfirstname").withMiddleName("UpdatedMiddleName")
                 .withLastName("UpdatedlastName").withNickname("Nickname")
-                .withParnter("Parnter").withSecondPhone("no second house")
+                .withParnter("Parnter").withSecondPhone("+7123 34-34")
                 .withCompanyName("Luxoft").withAddress("Updated Address line 1,\naddressline2")
                 .withHomePhone("38067842").withMobilePhone("35148").withWorkPhone("123").withFaxNumber("526541")
-                .withEmail("UpdatedEmail@gmail.com").withNotes("Notes text...");
+                .withEmail("UpdatedEmail@gmail.com").withEmail2("testemail2@gmail.com").withEmail3("test3@yahoo.com").withNotes("Notes text...");
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.contact().all();
