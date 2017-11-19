@@ -89,6 +89,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address2"), contactData.getAddress2());
         type(By.name("phone2"), contactData.getSecondPhone());
         type(By.name("notes"), contactData.getNotes());
+        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
             if ((calcSelectOption() > 1) && (contactData.getGroup() != null)) {

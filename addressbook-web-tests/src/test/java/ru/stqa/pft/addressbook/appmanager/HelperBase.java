@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class HelperBase {
@@ -17,6 +18,12 @@ public class HelperBase {
             jse.executeScript("arguments[0].scrollIntoView()", wd.findElement(locator));
         } else {
             jse.executeScript("arguments[0].click()", wd.findElement(locator));
+        }
+    }
+
+    protected void attach(By locator, File file) {
+        if (file != null) {
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
         }
     }
 
