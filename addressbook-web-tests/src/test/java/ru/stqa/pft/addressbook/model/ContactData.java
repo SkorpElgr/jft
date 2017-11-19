@@ -10,41 +10,32 @@ public class ContactData {
     private String firstName;
     @Expose
     private String lastName;
-    @Expose
     private String middleName;
-    @Expose
     private String nickname;
     @Expose
     private String partner;
     @Expose
+    private String address;
     private String address2;
     @Expose
     private String companyName;
-    @Expose
-    private String address;
     @Expose
     private String homePhone;
     @Expose
     private String mobilePhone;
     @Expose
     private String workPhone;
-    @Expose
     private String faxNumber;
     @Expose
     private String email;
-    @Expose
     private String email2;
-    @Expose
     private String email3;
     @Expose
     private String secondPhone;
-    @Expose
     private String notes;
     @Expose
     private String group;
-    @Expose
     private String allPhones;
-    @Expose
     private String allEmails;
 
     public File getPhoto() {
@@ -95,75 +86,6 @@ public class ContactData {
         this.allPhones = allPhones;
         return this;
     }
-
-
-//    public ContactData(int id, String name, String lastname) {
-//        this.id = id;
-//        this.firstName = name;
-//        this.lastName = lastname;
-//    }
-//
-//    public ContactData(String name, String lastname) {
-//        this.id = Integer.MAX_VALUE;
-//        this.firstName = name;
-//        this.lastName = lastname;
-//    }
-//
-//    public ContactData(String name, String lastname, String group) {
-//        this.id = Integer.MAX_VALUE;
-//        this.firstName = name;
-//        this.lastName = lastname;
-//        this.group = group;
-//    }
-//
-//    public ContactData(int id, String firstName, String middleName, String lastName,
-//                       String nickname, String partner, String address2,
-//                       String companyName, String address, String homePhone,
-//                       String mobilePhone, String workPhone, String faxNumber,
-//                       String email, String secondPhone, String notes, String group) {
-//        this.id = id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.middleName = middleName;
-//        this.nickname = nickname;
-//        this.partner = partner;
-//        this.address2 = address2;
-//        this.companyName = companyName;
-//        this.address = address;
-//        this.homePhone = homePhone;
-//        this.mobilePhone = mobilePhone;
-//        this.workPhone = workPhone;
-//        this.faxNumber = faxNumber;
-//        this.email = email;
-//        this.secondPhone = secondPhone;
-//        this.notes = notes;
-//        this.group = group;
-//    }
-//
-//    public ContactData(String firstName, String middleName, String lastName,
-//                       String nickname, String partner, String address2,
-//                       String companyName, String address, String homePhone,
-//                       String mobilePhone, String workPhone, String faxNumber,
-//                       String email, String secondPhone, String notes, String group) {
-//        this.id = Integer.MAX_VALUE;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.middleName = middleName;
-//        this.nickname = nickname;
-//        this.partner = partner;
-//        this.address2 = address2;
-//        this.companyName = companyName;
-//        this.address = address;
-//        this.homePhone = homePhone;
-//        this.mobilePhone = mobilePhone;
-//        this.workPhone = workPhone;
-//        this.faxNumber = faxNumber;
-//        this.email = email;
-//        this.secondPhone = secondPhone;
-//        this.notes = notes;
-//        this.group = group;
-//    }
-
 
     public String getFirstName() {
         return firstName;
