@@ -4,6 +4,10 @@
 .gradle
 build/
 
+# Gradle:
+.idea/**/gradle.xml
+.idea/**/libraries
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -14,3 +18,9 @@ gradle-app.setting
 /sandbox/.gradle/
 /addressbook-web-tests/.gradle/
 .idea/modules/addressbook-web-tests_test.iml
+
+
+# User-specific stuff:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries

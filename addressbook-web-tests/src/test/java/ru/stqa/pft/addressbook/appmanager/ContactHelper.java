@@ -31,7 +31,7 @@ public class ContactHelper extends HelperBase {
                 .withNickname("Nickname").withParnter("Parnter").withSecondPhone("no second house")
                 .withCompanyName("Luxoft").withAddress("Some Address line 1,\naddressline2").withHomePhone("38067842")
                 .withMobilePhone("35148").withFaxNumber("478461").withEmail("email@gmail.com").withAddress2("30215")
-                .withNotes("Notes text...").withGroup("test1"), true);
+                .withNotes("Notes text...").withGroup("groupChangedName"), true);
         submitContactCreation();
     }
 
@@ -94,8 +94,9 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.xpath("//select[@name='new_group']//option")).size();
     }
 
-    public void initContactModification(int index) {
-        wd.findElements(By.xpath("//img[@title='Edit']")).get(index).click();
+    public void initContactModification(ContactData contact) {
+        wd.findElement(By.xpath("//td/input[@value='" + contact.getId() + "']/../../td[8]/a")).click();
+
     }
 
     public int getContactCount() {
@@ -120,8 +121,12 @@ public class ContactHelper extends HelperBase {
 //        }
 //        return contacts;
 //    }
+//    private Contacts contactCache = null;
 
     public Contacts all() {
+//        if (groupCache != null){
+//            return new Groups(groupCache);
+//        }
         isElementPresent(By.id("maintable"));
         Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
@@ -140,9 +145,9 @@ public class ContactHelper extends HelperBase {
         fillContactForm(contact, true);
     }
 
-    public void modify(int index, ContactData contact) {
-        select(index);
-        initContactModification(index);
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
+        initContactModification(contact);
         fillContactForm(contact, false);
     }
 }
