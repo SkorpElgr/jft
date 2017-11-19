@@ -19,7 +19,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public void submitGroupModification() {
-        click(By.name("update"));
+        clickJS(By.name("update"));
     }
 
     public int count() {
@@ -49,7 +49,7 @@ public class GroupHelper extends HelperBase {
     }
 
     private void selectGroupById(int id) {
-        click(By.cssSelector("input[value='" + id + "']"));
+        clickJS(By.cssSelector("input[value='" + id + "']"));
     }
 
     public void create(GroupData groupData) {
@@ -75,11 +75,11 @@ public class GroupHelper extends HelperBase {
     }
 
     public void initGroupCreation() {
-        click(By.name("new"));
+        click(By.xpath("//input[@name='new']"));
     }
 
     public void deleteSelectedGroups() {
-        click(By.name("delete"));
+        clickJS(By.name("delete"));
         groupCache = null;
         returnToGroupPage();
     }
@@ -87,7 +87,7 @@ public class GroupHelper extends HelperBase {
 
     public void initGroupModification(int index) {
         selectGroupById(index);
-        click(By.name("edit"));
+        clickJS(By.name("edit"));
     }
 
     private Groups groupCache = null;

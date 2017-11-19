@@ -43,22 +43,22 @@ public class ContactHelper extends HelperBase {
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
-        click(By.xpath("//input[@value='Delete']"));
+        clickJS(By.xpath("//input[@value='Delete']"));
         closeContactDeletionAlert();
         contactCache = null;
         goToMainPage();
     }
 
     public void initContactCreation() {
-        click(By.linkText("add new"));
+        clickJS(By.linkText("add new"));
     }
 
     public void submitContactModification() {
-        click(By.name("update"));
+        clickJS(By.name("update"));
     }
 
     public void submitContactCreation() {
-        click(By.name("submit"));
+        clickJS(By.name("submit"));
     }
 
 
@@ -109,7 +109,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactModificationById(ContactData contact) {
-        // wd.findElement(By.xpath("//input[@value='" + contact.getId() + "']/../../td[8]/a")).click();
+        // wd.findElement(By.xpath("//input[@value='" + contact.getId() + "']/../../td[8]/a")).clickJS();
         int id = contact.getId();
         wd.findElement(By.xpath(String.format("//a[@href='edit.php?id=%s']", id))).click();
     }

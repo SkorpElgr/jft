@@ -12,13 +12,17 @@ public class HelperBase {
         this.wd = wd;
     }
 
-    protected void click(By locator) {
+    protected void clickJS(By locator) {
         JavascriptExecutor jse = (JavascriptExecutor) wd;
         if (!isElementPresent(locator)) {
             jse.executeScript("arguments[0].scrollIntoView()", wd.findElement(locator));
         } else {
-            jse.executeScript("arguments[0].click()", wd.findElement(locator));
+            jse.executeScript("arguments[0].clickJS()", wd.findElement(locator));
         }
+    }
+
+    protected void click(By locator) {
+        wd.findElement(locator).click();
     }
 
     protected void attach(By locator, File file) {
@@ -48,7 +52,7 @@ public class HelperBase {
     }
 
     protected boolean isElementPresent(By locator) {
-        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         try {
             wd.findElement(locator);
             wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
