@@ -110,12 +110,12 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public int getContactCount() {
+    public int count() {
         return (wd.findElements(By.name("selected[]")).size());
     }
 
     public boolean isThereAnyGroup() {
-        return (getContactCount() > 0);
+        return (count() > 0);
     }
 
     //    public List<ContactData> list() {

@@ -22,12 +22,12 @@ public class GroupHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public int getGroupCount() {
+    public int count() {
         return (wd.findElements(By.xpath("//span[@class='group']")).size());
     }
 
     public boolean isThereAnyGroup() {
-        return (getGroupCount() > 0);
+        return (count() > 0);
     }
 
     public void submitGroupCreation() {
