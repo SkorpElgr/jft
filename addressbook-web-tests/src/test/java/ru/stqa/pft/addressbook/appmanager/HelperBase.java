@@ -15,10 +15,15 @@ public class HelperBase {
     protected void clickJS(By locator) {
         JavascriptExecutor jse = (JavascriptExecutor) wd;
         if (!isElementPresent(locator)) {
-            jse.executeScript("arguments[0].scrollIntoView()", wd.findElement(locator));
+            scrollToWebElement(locator);
         } else {
             jse.executeScript("arguments[0].clickJS()", wd.findElement(locator));
         }
+    }
+
+    private void scrollToWebElement(By locator) {
+        JavascriptExecutor jse = (JavascriptExecutor) wd;
+        jse.executeScript("arguments[0].scrollIntoView()", wd.findElement(locator));
     }
 
     protected void click(By locator) {
@@ -35,6 +40,7 @@ public class HelperBase {
         if (text != null) {
             String existingText = wd.findElement(locator).getAttribute("value");
             if (!existingText.equals(text)) {
+                scrollToWebElement(locator);
                 click(locator);
                 wd.findElement(locator).clear();
                 wd.findElement(locator).sendKeys(text);

@@ -1,28 +1,50 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.File;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String firstName;
+    @Expose
     private String lastName;
+    @Expose
     private String middleName;
+    @Expose
     private String nickname;
-    private String parnter;
+    @Expose
+    private String partner;
+    @Expose
     private String address2;
+    @Expose
     private String companyName;
+    @Expose
     private String address;
+    @Expose
     private String homePhone;
+    @Expose
     private String mobilePhone;
+    @Expose
     private String workPhone;
+    @Expose
     private String faxNumber;
+    @Expose
     private String email;
+    @Expose
     private String email2;
+    @Expose
     private String email3;
+    @Expose
     private String secondPhone;
+    @Expose
     private String notes;
+    @Expose
     private String group;
+    @Expose
     private String allPhones;
+    @Expose
     private String allEmails;
 
     public File getPhoto() {
@@ -95,7 +117,7 @@ public class ContactData {
 //    }
 //
 //    public ContactData(int id, String firstName, String middleName, String lastName,
-//                       String nickname, String parnter, String address2,
+//                       String nickname, String partner, String address2,
 //                       String companyName, String address, String homePhone,
 //                       String mobilePhone, String workPhone, String faxNumber,
 //                       String email, String secondPhone, String notes, String group) {
@@ -104,7 +126,7 @@ public class ContactData {
 //        this.lastName = lastName;
 //        this.middleName = middleName;
 //        this.nickname = nickname;
-//        this.parnter = parnter;
+//        this.partner = partner;
 //        this.address2 = address2;
 //        this.companyName = companyName;
 //        this.address = address;
@@ -119,7 +141,7 @@ public class ContactData {
 //    }
 //
 //    public ContactData(String firstName, String middleName, String lastName,
-//                       String nickname, String parnter, String address2,
+//                       String nickname, String partner, String address2,
 //                       String companyName, String address, String homePhone,
 //                       String mobilePhone, String workPhone, String faxNumber,
 //                       String email, String secondPhone, String notes, String group) {
@@ -128,7 +150,7 @@ public class ContactData {
 //        this.lastName = lastName;
 //        this.middleName = middleName;
 //        this.nickname = nickname;
-//        this.parnter = parnter;
+//        this.partner = partner;
 //        this.address2 = address2;
 //        this.companyName = companyName;
 //        this.address = address;
@@ -159,8 +181,8 @@ public class ContactData {
         return nickname;
     }
 
-    public String getParnter() {
-        return parnter;
+    public String getPartner() {
+        return partner;
     }
 
     public String getAddress2() {
@@ -237,8 +259,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withParnter(String parnter) {
-        this.parnter = parnter;
+    public ContactData withParnter(String partner) {
+        this.partner = partner;
         return this;
     }
 

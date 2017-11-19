@@ -50,15 +50,15 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactCreation() {
-        clickJS(By.linkText("add new"));
+        click(By.linkText("add new"));
     }
 
     public void submitContactModification() {
-        clickJS(By.name("update"));
+        click(By.name("update"));
     }
 
     public void submitContactCreation() {
-        clickJS(By.name("submit"));
+        click(By.xpath("//input[@name='submit'][2]"));
     }
 
 
@@ -76,7 +76,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("middlename"), contactData.getMiddleName());
         type(By.name("nickname"), contactData.getNickname());
-        type(By.name("title"), contactData.getParnter());
+        type(By.name("title"), contactData.getPartner());
         type(By.name("company"), contactData.getCompanyName());
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHomePhone());
