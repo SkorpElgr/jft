@@ -30,7 +30,7 @@ public class ContactModificationTests extends TestBase {
                 .withLastName("UpdatedlastName").withNickname("Nickname")
                 .withParnter("Parnter").withSecondPhone("no second house")
                 .withCompanyName("Luxoft").withAddress("Updated Address line 1,\naddressline2")
-                .withHomePhone("38067842").withMobilePhone("35148").withFaxNumber("526541")
+                .withHomePhone("38067842").withMobilePhone("35148").withWorkPhone("123").withFaxNumber("526541")
                 .withEmail("UpdatedEmail@gmail.com").withNotes("Notes text...");
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));

@@ -11,7 +11,7 @@ public class ContactData {
     private String companyName;
     private String address;
     private String homePhone;
-    private String mobilePone;
+    private String mobilePhone;
     private String workPhone;
     private String faxNumber;
     private String email;
@@ -42,7 +42,7 @@ public class ContactData {
 //    public ContactData(int id, String firstName, String middleName, String lastName,
 //                       String nickname, String parnter, String address2,
 //                       String companyName, String address, String homePhone,
-//                       String mobilePone, String workPhone, String faxNumber,
+//                       String mobilePhone, String workPhone, String faxNumber,
 //                       String email, String secondPhone, String notes, String group) {
 //        this.id = id;
 //        this.firstName = firstName;
@@ -54,7 +54,7 @@ public class ContactData {
 //        this.companyName = companyName;
 //        this.address = address;
 //        this.homePhone = homePhone;
-//        this.mobilePone = mobilePone;
+//        this.mobilePhone = mobilePhone;
 //        this.workPhone = workPhone;
 //        this.faxNumber = faxNumber;
 //        this.email = email;
@@ -66,7 +66,7 @@ public class ContactData {
 //    public ContactData(String firstName, String middleName, String lastName,
 //                       String nickname, String parnter, String address2,
 //                       String companyName, String address, String homePhone,
-//                       String mobilePone, String workPhone, String faxNumber,
+//                       String mobilePhone, String workPhone, String faxNumber,
 //                       String email, String secondPhone, String notes, String group) {
 //        this.id = Integer.MAX_VALUE;
 //        this.firstName = firstName;
@@ -78,7 +78,7 @@ public class ContactData {
 //        this.companyName = companyName;
 //        this.address = address;
 //        this.homePhone = homePhone;
-//        this.mobilePone = mobilePone;
+//        this.mobilePhone = mobilePhone;
 //        this.workPhone = workPhone;
 //        this.faxNumber = faxNumber;
 //        this.email = email;
@@ -125,7 +125,7 @@ public class ContactData {
     }
 
     public String getMobilePhone() {
-        return mobilePone;
+        return mobilePhone;
     }
 
     public String getWorkPhone() {
@@ -207,8 +207,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withMobilePhone(String mobilePone) {
-        this.mobilePone = mobilePone;
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
         return this;
     }
 
