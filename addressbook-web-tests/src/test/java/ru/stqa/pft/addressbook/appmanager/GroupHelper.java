@@ -49,7 +49,7 @@ public class GroupHelper extends HelperBase {
     }
 
     private void selectGroupById(int id) {
-        clickJS(By.cssSelector("input[value='" + id + "']"));
+        click(By.cssSelector("input[value='" + id + "']"));
     }
 
     public void create(GroupData groupData) {
@@ -79,7 +79,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public void deleteSelectedGroups() {
-        clickJS(By.name("delete"));
+        click(By.name("delete"));
         groupCache = null;
         returnToGroupPage();
     }
@@ -87,7 +87,7 @@ public class GroupHelper extends HelperBase {
 
     public void initGroupModification(int index) {
         selectGroupById(index);
-        clickJS(By.name("edit"));
+        click(By.name("edit"));
     }
 
     private Groups groupCache = null;

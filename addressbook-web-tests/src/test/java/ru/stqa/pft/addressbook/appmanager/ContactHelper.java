@@ -54,7 +54,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactModification() {
-        click(By.name("update"));
+        clickJS(By.name("update"));
     }
 
     public void submitContactCreation() {
@@ -63,7 +63,7 @@ public class ContactHelper extends HelperBase {
 
 
     private void selectContactById(int id) {
-        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+        clickJS(By.cssSelector("input[value='" + id + "']"));
     }
 
     public void closeContactDeletionAlert() {

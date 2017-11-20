@@ -17,7 +17,7 @@ public class HelperBase {
         if (!isElementPresent(locator)) {
             scrollToWebElement(locator);
         } else {
-            jse.executeScript("arguments[0].clickJS()", wd.findElement(locator));
+            jse.executeScript("arguments[0].click()", wd.findElement(locator));
         }
     }
 
