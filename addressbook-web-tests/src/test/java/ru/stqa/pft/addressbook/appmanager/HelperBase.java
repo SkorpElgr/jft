@@ -27,7 +27,8 @@ public class HelperBase {
     }
 
     protected void click(By locator) {
-        wd.findElement(locator).click();
+        // wd.findElement(locator).click();
+        clickJS(locator);
     }
 
     protected void attach(By locator, File file) {

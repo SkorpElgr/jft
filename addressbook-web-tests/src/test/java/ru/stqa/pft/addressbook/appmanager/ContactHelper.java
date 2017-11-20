@@ -111,7 +111,7 @@ public class ContactHelper extends HelperBase {
     public void initContactModificationById(ContactData contact) {
         // wd.findElement(By.xpath("//input[@value='" + contact.getId() + "']/../../td[8]/a")).clickJS();
         int id = contact.getId();
-        wd.findElement(By.xpath(String.format("//a[@href='edit.php?id=%s']", id))).click();
+        clickJS(By.xpath(String.format("//a[@href='edit.php?id=%s']", id)));
     }
 
     public int count() {
