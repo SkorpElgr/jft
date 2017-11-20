@@ -50,7 +50,6 @@ public class ApplicationManager {
         wd.get(properties.getProperty("web.baseUrl"));
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
-        navigationHelper.goToMainPage();
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login(properties.getProperty("web.adminPassword"), properties.getProperty("web.adminLogin"));
         contactHelper = new ContactHelper(wd);
