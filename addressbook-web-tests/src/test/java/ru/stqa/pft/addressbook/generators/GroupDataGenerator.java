@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook.Generatots;
+package ru.stqa.pft.addressbook.generators;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;

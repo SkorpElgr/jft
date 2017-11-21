@@ -49,7 +49,7 @@ public class GroupHelper extends HelperBase {
     }
 
     private void selectGroupById(int id) {
-        click(By.cssSelector("input[value='" + id + "']"));
+        click(By.xpath("//input[@value='" + id + "']"));
     }
 
     public void create(GroupData groupData) {
