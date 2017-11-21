@@ -1,0 +1,38 @@
+[
+  {
+    "firstName": "name 0",
+    "lastName": "lastName 0",
+    "partner": "partner 0",
+    "companyName": "Company 0",
+    "address": "address 0",
+    "homePhone": "homePhone 0",
+    "mobilePhone": "mobilePhone 0",
+    "email": "email 0",
+    "secondPhone": "secondPhone 0",
+    "group": "group 0"
+  },
+  {
+    "firstName": "name 1",
+    "lastName": "lastName 1",
+    "partner": "partner 1",
+    "companyName": "Company 1",
+    "address": "address 1",
+    "homePhone": "homePhone 1",
+    "mobilePhone": "mobilePhone 1",
+    "email": "email 1",
+    "secondPhone": "secondPhone 1",
+    "group": "group 1"
+  },
+  {
+    "firstName": "name 2",
+    "lastName": "lastName 2",
+    "partner": "partner 2",
+    "companyName": "Company 2",
+    "address": "address 2",
+    "homePhone": "homePhone 2",
+    "mobilePhone": "mobilePhone 2",
+    "email": "email 2",
+    "secondPhone": "secondPhone 2",
+    "group": "group 2"
+  }
+]
