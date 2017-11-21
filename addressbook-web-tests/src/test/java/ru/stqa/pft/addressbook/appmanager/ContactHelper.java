@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
@@ -23,7 +22,7 @@ public class ContactHelper extends HelperBase {
                 .withNickname("Nickname").withParnter("Parnter").withSecondPhone("123")
                 .withCompanyName("Luxoft").withAddress("Some Address line 1,\naddressline2").withHomePhone("38067842")
                 .withMobilePhone("35148").withFaxNumber("478461").withEmail("email@gmail.com").withAddress2("30215")
-                .withNotes("Notes text...").withGroup("groupChangedName"), true);
+                .withNotes("Notes text..."), true);
         submitContactCreation();
         contactCache = null;
     }
@@ -91,15 +90,15 @@ public class ContactHelper extends HelperBase {
         type(By.name("notes"), contactData.getNotes());
         //  attach(By.name("photo"), contactData.getPhoto());
 
-        if (creation) {
-            if ((calcSelectOption() > 1) && (contactData.getGroup() != null)) {
-                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-                submitContactCreation();
-            }
-        } else {
+//        if (creation) {
+//            if ((calcSelectOption() > 1) && (contactData.getGroup() != null)) {
+//                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+//                submitContactCreation();
+//            }
+//        } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
             submitContactModification();
-        }
+//        }
         goToMainPage();
     }
 
