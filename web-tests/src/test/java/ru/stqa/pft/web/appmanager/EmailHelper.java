@@ -27,8 +27,8 @@ public class EmailHelper{
             smtp.load(new FileReader(new File(String.format("web-tests/src/test/resources/%s.properties", target))));
 //        String SMTP_USER = smtp.getProperty("SMTP_USER");
 //        String SMTP_PASS = smtp.getProperty("SMTP_PASS");
-        String SMTP_USER = "asiaticegle@gmail.com";
-        String SMTP_PASS = "asiatic007";
+        String SMTP_USER = "useremail";
+        String SMTP_PASS = "Password";
 
         smtp.put("mail.transport.protocol", "smtps");
         smtp.put("mail.smtps.host", SMTP_USER);
