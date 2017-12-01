@@ -5,10 +5,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.Properties;
 
@@ -19,7 +16,8 @@ public class EmailHelper{
 
     public static void main(String[] args) throws IOException, MessagingException {
         EmailHelper h = new EmailHelper();
-        h.sendEmail();
+     //   h.sendEmail();
+        h.readEmail();
     }
 
     private void sendEmail() throws IOException, MessagingException {
@@ -52,5 +50,35 @@ public class EmailHelper{
             e.printStackTrace();
         }
     }
+    private void readEmail() throws IOException, MessagingException {
 
+
+        try {
+            String target = System.getProperty("target", "smtp");
+            smtp.load(new FileReader(new File(String.format("web-tests/src/test/resources/%s.properties", target))));
+            Session session = Session.getDefaultInstance(smtp, null);
+
+            Store store = session.getStore("imaps");
+            store.connect("smtp.gmail.com", "*************@gmail.com", "your_password");
+
+            Folder inbox = store.getFolder("inbox");
+            inbox.open(Folder.READ_ONLY);
+            int messageCount = inbox.getMessageCount();
+
+            System.out.println("Total Messages:- " + messageCount);
+
+            Message[] messages = inbox.getMessages();
+            System.out.println("------------------------------");
+
+            for (int i = 0; i < 10; i++) {
+                System.out.println("Mail Subject:- " + messages[i].getSubject());
+            }
+
+            inbox.close(true);
+            store.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
